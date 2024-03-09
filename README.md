@@ -5,7 +5,7 @@ Imagine you have the following scenario:
 * Having 2 Symfony apps deployed in different domains or subdomains (e.g. `users.example.com` & `website.example.com`).
 * You have to login using the first app but there is not persisted users in this one. The users, required for the authentication
 process, are located in the second one.
-* Once you logged in the first app, any time this app needs to refresh the session user (e.g. every time a protected page is loaded).
+* Once you logged in the first app, any time required, it needs to refresh the session user (e.g. every time a protected page is loaded).
 
 How do you achieve that the first app communicates with the second to handle the authentication/user refresher process in a fluid way?
 
