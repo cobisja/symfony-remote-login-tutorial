@@ -2,12 +2,13 @@
 
 Imagine you have the following scenario:
 
-* Having 2 Symfony apps deployed in different domains or subdomains (e.g. `users.example.com` & `website.example.com`).
-* You have to login using the first app but there is not persisted users in this one. The users, required for the authentication
+* There are 2 Symfony apps deployed in different domains or subdomains (e.g. `users.example.com` & `website.example.com`).
+* You have to log in using the first app but there are not persisted users in this one. The users, required for the authentication
 process, are located in the second one.
-* Once you logged in the first app, any time required, it needs to refresh the session user (e.g. every time a protected page is loaded).
+* Once you logged in the first app, when required (by Symfony), it needs to refresh the session user (e.g. every time a protected page is loaded)
+from the remote source.
 
-How do you achieve that the first app communicates with the second to handle the authentication/user refresher process in a fluid way?
+How do you achieve that the first app communicates with the second one to handle the authentication/user refresher tasks in a fluid way?
 
 Well, this is where writing a **custom authenticator** and a **custom user provider** come handy.
 
@@ -26,7 +27,7 @@ You have to run the following commands for both apps:
 - symfony console doctrine:fixtures:load
 ```
 
-Then you have to execute a web server. Here, I used the Symfony's server:
+Then, you have to run a web server. Here, I used the Symfony's server:
 
 ### Application #1 - website.example.com
 ```
@@ -51,13 +52,13 @@ Set the var according your specific scenario.
 
 ## App #2: Where the users live! - users.example.com
 
-This App will expose 2 endpoints:
+This App exposes 2 endpoints:
 
 * Authenticate user:
 ```
 POST http://localhost:8001/login
 ```
-In the payload you'll pass the credentials:
+In the payload you pass the credentials:
 ```json
 {
   "email": "john.doe@example.org",
@@ -68,20 +69,20 @@ The following HTTP codes are returned:
 - If authentication fails: `HTTP 401`
 - If authentication is ok: `HTTP 200`
 
-This request will be called when the Login process is performed in the App #1
+This request will be invoked when the Login process is performed by the App #1
 
 * Refresh user:
 
 ```
 GET http://localhost:8001/users/show?email=<the-user-email-requested>
 ```
-This request will be called every time Symfony requires to refresh the session user.
+This request will be invoked every time Symfony requires to refresh the session user.
 
 The following HTTP codes are returned:
 - If authentication fails: `HTTP 404`
 - If authentication is ok: `HTTP 200`
 
-Please, review the code under `users.example.com` folder in order to have a full understanding
+Please, review the code under `users.example.com` folder, in order to have a full understanding
 about how these endpoints have been implemented.
 
 ## App #1: Where the remote users are requested - website.example.com
