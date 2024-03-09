@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Home#index</h1>
+
+    <h3>Dummy list</h3>
+
+    <ul>
+        {% for dummy in dummyList %}
+            <li>{{ dummy.dummyText }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

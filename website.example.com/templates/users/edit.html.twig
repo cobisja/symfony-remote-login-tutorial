@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Edit My Name</h1>
+
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <div class="text-center py-5">
+        <button class="btn btn-primary">{{ button_label|default('Save') }}</button>
+    </div>
+    {{ form_end(form) }}
+
+{% endblock %}
