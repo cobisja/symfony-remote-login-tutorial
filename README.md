@@ -26,7 +26,7 @@ You have to run the following commands for both apps:
 - symfony console doctrine:fixtures:load
 ```
 
-Then you have to execute a web server. Here, I used the Symfony server:
+Then you have to execute a web server. Here, I used the Symfony's server:
 
 ### Application #1 - website.example.com
 ```
@@ -35,7 +35,7 @@ symfony server:start --no-tls --port=8000 -d
 
 ### Application #2 - users.example.com
 ```
-symfony server:start --no-tls --port=8000 -d
+symfony server:start --no-tls --port=8001 -d
 ```
 
 If you want to use your own webserver remember, set different domains/subdomains for each app, or set different ports for them,
