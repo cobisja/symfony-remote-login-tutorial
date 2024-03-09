@@ -81,12 +81,12 @@ The following HTTP codes are returned:
 - If authentication fails: `HTTP 404`
 - If authentication is ok: `HTTP 200`
 
-Please the code under `users.example.com` folder in order to hava a full understanding
+Please, review the code under `users.example.com` folder in order to have a full understanding
 about how these endpoints have been implemented.
 
 ## App #1: Where the remote users are requested - website.example.com
 
-Here you need to write a custom authenticator in order to tell Symfony where to look users to
+Here, you need to write a custom authenticator in order to tell Symfony where to look the users to
 perform the authentication process:
 
 ```php
@@ -139,7 +139,7 @@ class RemoteUserAuthenticator extends AbstractLoginFormAuthenticator
 As you can see, the authenticator gets the user's credentials and pass them to the `remoteAuthenticatorService` where
 the authentication request is performed.
 
-About the service used to refresh the session user, you have to implement a custom `UserProvider`:
+About the provider needed to refresh the session user, you have to implement a custom `UserProvider`:
 
 ```php
 readonly class RemoteUserProvider implements UserProviderInterface
@@ -168,9 +168,9 @@ readonly class RemoteUserProvider implements UserProviderInterface
     }
 }
 ```
-As you can see, the provider call the request `POST /login` every time Symfony requires to refresh the session user.
+As you can see, the provider invokes the request `POST /login` every time Symfony requires to refresh the session user.
 
-Finally you have to set up a couple of things in the `security.yaml` in order to tell Symfony to use the custom authenticator and
+Finally, you have to set up a couple of things in the `security.yaml` in order to tell Symfony to use the custom authenticator and
 the custom user provider:
 
 * Set the custom provider:
