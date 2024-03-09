@@ -3,7 +3,7 @@
 Imagine you have the following scenario:
 
 * Having 2 Symfony apps deployed in different domains or subdomains (e.g. `users.example.com` & `website.example.com`).
-* You have to login using the first app but there is no users entity in this one. The users, required for the authentication
+* You have to login using the first app but there is not persisted users in this one. The users, required for the authentication
 process, are located in the second one.
 * Once you logged in the first app, any time this app needs to refresh the session user (e.g. every time a protected page is loaded).
 
